@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=GUI
+comment1.params=pQueue
+comment1.target=GUI(Queue)
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=
+comment4.target=void\ update()
+comment5.params=pKunde
+comment5.target=void\ addKunde(Kunde)
+numComments=6

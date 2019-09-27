@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Queue
+comment1.params=
+comment1.target=Queue()
+comment2.params=
+comment2.target=Kunde\ getHead()
+comment3.params=pHead
+comment3.target=void\ setHead(Kunde)
+comment4.params=
+comment4.target=Kunde\ getTail()
+comment5.params=pTail
+comment5.target=void\ setTail(Kunde)
+comment6.params=
+comment6.target=Kunde\ front()
+comment7.params=
+comment7.target=boolean\ isEmpty()
+comment8.params=pKunde
+comment8.target=void\ enqueue(Kunde)
+comment9.params=
+comment9.target=void\ dequeue()
+numComments=10

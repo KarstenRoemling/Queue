@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Kunde
+comment1.params=
+comment1.target=Kunde()
+comment10.params=
+comment10.target=Kunde\ getNachfolger()
+comment11.params=pNachfolger
+comment11.target=void\ setNachfolger(Kunde)
+comment2.params=pName
+comment2.target=Kunde(java.lang.String)
+comment3.params=pAlter\ pGeld\ pName
+comment3.target=Kunde(int,\ double,\ java.lang.String)
+comment4.params=
+comment4.target=int\ getAlter()
+comment5.params=pAlter
+comment5.target=void\ setAlter(int)
+comment6.params=
+comment6.target=double\ getGeld()
+comment7.params=pGeld
+comment7.target=void\ setGeld(double)
+comment8.params=
+comment8.target=java.lang.String\ getName()
+comment9.params=pName
+comment9.target=void\ setName(java.lang.String)
+numComments=12
