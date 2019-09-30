@@ -1,13 +1,17 @@
 #BlueJ class context
 comment0.target=GUI
+comment0.text=\r\n\ Graphical\ User\ Interface.\r\n\ Frame\ with\ Text\ representing\ the\ Customers,\ allows\ User\ Interaction.\r\n
 comment1.params=pQueue
 comment1.target=GUI(Queue)
+comment1.text=\r\n\ constructor\:\ Creates\ and\ positions\ GUI\ Components,\ adds\ them\ to\ the\ Frame,\ adds\ ClickEvents\ for\ buttons\r\n
 comment2.params=e
 comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment3.params=e
 comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment4.params=
 comment4.target=void\ update()
+comment4.text=\r\n\ Updates\ the\ Graphical\ User\ Interface\ in\ order\ to\ represent\ the\ changed\ Queue\ object\r\n
 comment5.params=pKunde
 comment5.target=void\ addKunde(Kunde)
+comment5.text=\r\n\ Adds\ one\ Customer\ as\ a\ JLabel\ to\ the\ JFrame\r\n
 numComments=6
