@@ -2,6 +2,8 @@
 comment0.target=Queue
 comment1.params=
 comment1.target=Queue()
+comment10.params=pName
+comment10.target=boolean\ containsKunde(java.lang.String)
 comment2.params=
 comment2.target=Kunde\ getHead()
 comment3.params=pHead
@@ -18,4 +20,4 @@ comment8.params=pKunde
 comment8.target=void\ enqueue(Kunde)
 comment9.params=
 comment9.target=void\ dequeue()
-numComments=10
+numComments=11

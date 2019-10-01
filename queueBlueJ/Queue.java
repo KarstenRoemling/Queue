@@ -48,4 +48,15 @@ public class Queue
             head = head.getNachfolger();
         }
     }
+    
+    public boolean containsKunde(String pName){
+        Kunde currentKunde = front();
+        while(currentKunde != null){
+            if(currentKunde.getName() == pName){
+                return true;
+            }
+            currentKunde = currentKunde.getNachfolger();
+        }
+        return false;
+    }
 }
