@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=GUIManager
+comment1.params=pType
+comment1.target=GUIManager(java.lang.Class)
+comment2.params=pName
+comment2.target=void\ create(java.lang.String)
+comment3.params=pElement
+comment3.target=void\ add(java.lang.Object)
+comment4.params=
+comment4.target=Queue\ getQueue()
+comment5.params=
+comment5.target=java.lang.String\ getName()
+numComments=6

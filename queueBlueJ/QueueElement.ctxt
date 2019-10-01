@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=QueueElement
+comment1.params=pObject
+comment1.target=QueueElement(java.lang.Object)
+comment2.params=
+comment2.target=QueueElement\ getNachfolger()
+comment3.params=pNachfolger
+comment3.target=void\ setNachfolger(QueueElement)
+comment4.params=
+comment4.target=java.lang.Object\ get()
+numComments=5

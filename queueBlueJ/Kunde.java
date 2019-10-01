@@ -1,30 +1,26 @@
-public class Kunde
+public class Kunde extends NameObject
 {
     private int alter;
     private double geld;
     private String name;
-    private Kunde nachfolger;
     
     public Kunde()
     {
+        super("");
         alter = 0;
         geld = 0.0;
-        name = "";
-        nachfolger = null;
     }
     
     public Kunde(String pName){
+        super(pName);
         alter = 0;
         geld = 0.0;
-        name = pName;
-        nachfolger = null;
     }
     
     public Kunde(int pAlter, double pGeld, String pName){
+        super(pName);
         alter = pAlter;
         geld = pGeld;
-        name = pName;
-        nachfolger = null;
     }
 
     public int getAlter(){
@@ -41,21 +37,5 @@ public class Kunde
     
     public void setGeld(double pGeld){
         geld = pGeld;
-    }
-    
-    public String getName(){
-        return name;
-    }
-    
-    public void setName(String pName){
-        name = pName;
-    }
-    
-    public Kunde getNachfolger(){
-        return nachfolger;
-    }
-    
-    public void setNachfolger(Kunde pNachfolger){
-        nachfolger = pNachfolger;
     }
 }

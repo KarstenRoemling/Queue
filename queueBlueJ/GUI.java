@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.Font;
 import java.awt.event.*;
 import java.util.*;
 
@@ -15,8 +16,8 @@ public class GUI
     private JButton addButton;
     private JTextField nameText;
     
-    //ArrayList containing all JLabels (Texts) that represent customers
-    private ArrayList<JLabel> kunden;
+    //ArrayList containing all JLabels (Texts) that represent elements
+    private ArrayList<JLabel> elements;
     
     //Queue object to read and create data structure
     private Queue queue;
@@ -24,22 +25,23 @@ public class GUI
     /**
      * constructor: Creates and positions GUI Components, adds them to the Frame, adds ClickEvents for buttons
      */
-    public GUI(Queue pQueue)
+    public GUI(GUIManager pManager)
     {
-        queue = pQueue;
-        kunden = new ArrayList<JLabel>();
+        queue = pManager.getQueue();
+        elements = new ArrayList<JLabel>();
         
         //New Window (Frame) created, window title "Warteschlange"
         frame = new JFrame("Warteschlange");
         
         //Heading Text "Warteschlange"
-        heading = new JLabel("Warteschlange");
-        heading.setBounds(30,40,200,40);
+        heading = new JLabel("Warteschlange - " + pManager.getName());
+        heading.setBounds(30,40,300,40);
+        heading.setFont(new Font("Arial", Font.PLAIN, 20));
         frame.add(heading);
         
-        //Button to dequeue the first customer.
+        //Button to dequeue the first element.
         removeButton = new JButton("Entfernen");
-        removeButton.setBounds(245,45,95,30);
+        removeButton.setBounds(345,45,95,30);
         //Click event
         removeButton.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
@@ -51,18 +53,15 @@ public class GUI
         });
         frame.add(removeButton);
         
-        //Button to enqueue a new Customer.
+        //Button to enqueue a new Element.
         addButton = new JButton("Hinzufügen");
-        addButton.setBounds(245,100,95,30);
         //Click event
         addButton.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){
-                //When the Button is clicked, an new Customer is created with the name inputted in the TextField
-                Kunde kunde = new Kunde(nameText.getText());
+                //When the Button is clicked, an new QueueElement is created and added to the Queue with the name inputted in the TextField
+                pManager.create(nameText.getText());
                 //The Text Field is made empty again
                 nameText.setText("");
-                //the created Customer object is added to the Queue data structure.
-                queue.enqueue(kunde);
                 //After that, the GUI is updated
                 update();
             }
@@ -71,14 +70,15 @@ public class GUI
         
         //A TextField (here the User can enter text) is created
         nameText = new JTextField();
-        nameText.setBounds(30,100,200,30);
         frame.add(nameText);
         
         //The  frames size is set
-        frame.setSize(400, 400);
+        frame.setSize(600, 400);
         
         //Layout is set to custom layout one (no default layout)
         frame.setLayout(null);
+        
+        update();
         
         //Window is made visible
         frame.setVisible(true);
@@ -88,39 +88,44 @@ public class GUI
      * Updates the Graphical User Interface in order to represent the changed Queue object
      */
     public void update(){
-        //Removes all JLabels representing a customer
-        for(int i = 0; i < kunden.size(); i++){
-            frame.remove(kunden.get(i));
+        //Removes all JLabels representing an element
+        for(int i = 0; i < elements.size(); i++){
+            frame.remove(elements.get(i));
         }
-        kunden.clear();
+        elements.clear();
         
-        Kunde kunde = queue.front();
-        addKunde(kunde);
+        QueueElement element = queue.getHead();
         
-        //Adds all customers graphically that can be found in the Queue object
-        while(kunde != null && kunde.getNachfolger() != null){
-            kunde = kunde.getNachfolger();
-            addKunde(kunde);
+        //Adds all elements graphically that can be found in the Queue object
+        while(element != null){
+            addElement(element);
+            element = element.getNachfolger();
         }
         
         //Updates the position of the input field and the add button
-        nameText.setBounds(30,100 + kunden.size() * 35,200,30);
-        addButton.setBounds(245,100 + kunden.size() * 35,95,30);
+        nameText.setBounds(30,100 + elements.size() * 35,300,30);
+        addButton.setBounds(345,100 + elements.size() * 35,95,30);
     }
     
     /**
-     * Adds one Customer as a JLabel to the JFrame
+     * Adds one QueueElement as a JLabel to the JFrame
      */
-    public void addKunde(Kunde pKunde){
-        if(pKunde == null){
+    public void addElement(QueueElement pElement){
+        if(pElement == null){
             return;
         }
         
-        JLabel kundeLabel = new JLabel(pKunde.getName());
-        kundeLabel.setBounds(30,100 + kunden.size() * 35,200,30);
+        String text = "[Für deinen Datentyp wurde kein Text gefunden]";
+        if(pElement.get() instanceof NameObject){
+            NameObject no = (NameObject) pElement.get();
+            text = no.getName();
+        }
         
-        kunden.add(kundeLabel);
-        frame.add(kundeLabel);
+        JLabel elementLabel = new JLabel(text);
+        elementLabel.setBounds(30,100 + elements.size() * 35,300,30);
+        
+        elements.add(elementLabel);
+        frame.add(elementLabel);
     }
 
 }

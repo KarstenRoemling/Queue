@@ -1,7 +1,7 @@
-public class Queue
+public class Queue<T>
 {
-    private Kunde head;
-    private Kunde tail;
+    private QueueElement<T> head;
+    private QueueElement<T> tail;
     
     public Queue()
     {
@@ -9,53 +9,60 @@ public class Queue
         tail = null;
     }
 
-    public Kunde getHead(){
+    public QueueElement<T> getHead(){
         return head;
     }
     
-    public void setHead(Kunde pHead){
+    public void setHead(QueueElement<T> pHead){
         head = pHead;
     }
     
-    public Kunde getTail(){
+    public QueueElement<T> getTail(){
         return tail;
     }
     
-    public void setTail(Kunde pTail){
+    public void setTail(QueueElement<T> pTail){
         tail = pTail;
     }
     
-    public Kunde front(){
-        return head;
+    public T front(){
+        return head.get();
     }
     
     public boolean isEmpty(){
         return head == null;
     }
     
-    public void enqueue(Kunde pKunde){
+    public void enqueue(T pElement){
+        QueueElement<T> queueElement = new QueueElement<T>(pElement);
         if(isEmpty()){
-            head = pKunde;
-            tail = pKunde;
+            head = queueElement;
+            tail = queueElement;
             return;
         }
-        tail.setNachfolger(pKunde);
-        tail = pKunde;
+        tail.setNachfolger(queueElement);
+        tail = queueElement;
     }
     
     public void dequeue(){
         if(!isEmpty()){
             head = head.getNachfolger();
+            if(isEmpty()){
+                tail = null;
+            }
         }
     }
     
-    public boolean containsKunde(String pName){
-        Kunde currentKunde = front();
-        while(currentKunde != null){
-            if(currentKunde.getName() == pName){
-                return true;
+    public boolean containsQueueElement(String pName){
+        QueueElement<T> currentQueueElement = getHead();
+        while(currentQueueElement != null){
+            if(currentQueueElement.get() instanceof NameObject){
+                NameObject no = (NameObject)currentQueueElement.get();
+                if(no.getName().equals(pName)){
+                    return true;
+                }
             }
-            currentKunde = currentKunde.getNachfolger();
+            currentQueueElement = currentQueueElement.getNachfolger();
         }
         return false;
     }

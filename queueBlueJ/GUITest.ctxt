@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=GUITest
+comment1.params=
+comment1.target=GUITest()
+comment2.params=pName
+comment2.target=void\ create(java.lang.String)
+numComments=3
